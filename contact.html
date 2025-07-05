@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Malmin</title>
+
+  <!-- Google Font (optional – remove if you have your own) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/navbar.css"/>
+  <link rel="stylesheet" href="css/contact.css">
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+
+  <header id="site-navbar">
+    <nav class="navbar">
+            <div class="nav-logo">Malmin</div>
+                <ul class="nav-links">
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="shop.html" class="dropbtn">Shop</a>
+                            <div class="dropdown-content">
+                                <a href="#">Candles</a>
+                                <a href="#">Skincare</a>
+                                <a href="#">Makeup</a>
+                            </div>
+                    </li>
+                    <li class="dropdown">
+                      <a href="services.html" class="dropbtn">Services</a>
+                        <div class="dropdown-content">
+                          <a href="services.html">Candle Refurbishment</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+              <div class="nav-icon" id="cart-icon">
+                    <i data-lucide="shopping-bag"></i>
+                </div>
+            </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="contact-wrapper" id="contact">
+      <!-- Contact Form -->
+      <form id="contact-form" class="card" autocomplete="off">
+        <h1>Contact Us</h1>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="from_name" placeholder="Your name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="reply_to" placeholder="you@example.com" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" placeholder="How can we help?" required></textarea>
+
+        <button type="submit">Send Message</button>
+        <div id="status" class="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    // ============================================
+    //  Contact Form Submission Handler (EmailJS)
+    // ============================================
+    const form = document.getElementById('contact-form');
+    const statusEl = document.getElementById('status');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      statusEl.textContent = 'Sending…';
+      statusEl.className = 'status';
+
+      emailjs
+        .sendForm(
+          'service_2zi4lmc',   // e.g. service_123abc
+          'template_lfe828',  // e.g. template_xzy789
+          form,
+          {
+            publicKey: 'qZ9mGkB-TWsPScZ8F', // e.g. ABCdEfgHIjklMNop
+          }
+        )
+        .then(() => {
+          statusEl.textContent = 'Thanks! Your message has been sent.';
+          statusEl.classList.add('success');
+          form.reset();
+        })
+        .catch((err) => {
+          console.error('EmailJS error:', err);
+          statusEl.textContent = 'Oops, something went wrong. Please try again later.';
+          statusEl.classList.add('error');
+        });
+    });
+  </script>
+</body>
+</html>
