@@ -1,27 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <title>Home | Malmin</title>
-        <link rel="stylesheet" href="css/index.css"/>
+        <link rel="stylesheet" href="css/index.css" />
         <!--<script src="scripts.js"></script>-->
-     <!--   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>  -->
+        <!--   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>  -->
     </head>
     <body>
-         <!-- IMPORT NAVBAR  -->
-          <div id="navbar">
-        <script>
-            fetch('navbar.html')
-                .then(resp => resp.text())
-                .then(html => {
-          document.getElementById('navbar').innerHTML = html;
-        })
-        .catch(err => console.error('Error loading navbar:', err));
-    </script>
-        </div>
-        
-         <h5>Website under construction, check back again soon!</h5>
-        
-        
+        <!-- IMPORT NAVBAR -->
+        <header id="site-navbar">
+            <div id="navbar"></div>
+            <script>
+                fetch("navbar.html")
+                    .then((resp) => resp.text())
+                    .then((html) => {
+                        document.getElementById("navbar").innerHTML = html;
+                    })
+                    .catch((err) => console.error("Error loading navbar:", err));
+            </script>
+        </header>
+
+        <h5>Website under construction, check back again soon!</h5>
     </body>
 </html>

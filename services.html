@@ -1,24 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <title>Services | Malmin</title>
-        <link rel="stylesheet" href="css/services.css"/>
+        <link rel="stylesheet" href="css/services.css" />
     </head>
     <body>
-   <header id="site-navbar">
-    <div id="navbar"></div>
-    <script>
-      fetch('navbar.html')
-        .then(resp => resp.text())
-        .then(html => {
-          document.getElementById('navbar').innerHTML = html;
-        })
-        .catch(err => console.error('Error loading navbar:', err));
-    </script>
-  </header>
-    
-    
-    
+        <!-- IMPORT NAVBAR -->
+        <header id="site-navbar">
+            <div id="navbar"></div>
+            <script>
+                fetch("navbar.html")
+                    .then((resp) => resp.text())
+                    .then((html) => {
+                        document.getElementById("navbar").innerHTML = html;
+                    })
+                    .catch((err) => console.error("Error loading navbar:", err));
+            </script>
+        </header>
     </body>
 </html>

@@ -1,102 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | Malmin</title>
-  <link rel="stylesheet" href="css/contact.css"/>
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script>
-    /* Initialise EmailJS (replace with your real key) */
-    emailjs.init('1_RFTegKq6OY8Wtsm');
-  </script>
-</head>
-<body>
-  <!-- IMPORT NAVBAR -->
-  <header id="site-navbar">
-    <div id="navbar"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Malmin</title>
+
+    <!-- Google Fonts (optional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/contact.css" />
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-      fetch('navbar.html')
-        .then(resp => resp.text())
-        .then(html => {
-          document.getElementById('navbar').innerHTML = html;
-        })
-        .catch(err => console.error('Error loading navbar:', err));
+      emailjs.init("1_RFTegKq6OY8Wtsm");
     </script>
-  </header>
+  </head>
+  <body>
+    <!-- IMPORT NAVBAR -->
+    <header id="site-navbar">
+      <div id="navbar"></div>
+      <script>
+        fetch("navbar.html")
+          .then((resp) => resp.text())
+          .then((html) => {
+            document.getElementById("navbar").innerHTML = html;
+          })
+          .catch((err) => console.error("Error loading navbar:", err));
+      </script>
+    </header>
 
-  <main>
-    <section class="contact-wrapper" id="contact">
-      <form id="contact-form" class="card" autocomplete="off">
-        <h1>Contact Us</h1>
+    <main>
+      <section class="contact-wrapper" id="contact">
+        <form id="contact-form" class="contact-card" autocomplete="off">
+          <h1 class="contact-title">Contact Us</h1>
 
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required />
+          <label class="contact-label" for="name">Name</label>
+          <input
+            class="contact-input"
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your name"
+            autocomplete="name"
+            required />
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+          <label class="contact-label" for="email">Email</label>
+          <input
+            class="contact-input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required />
 
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="6" placeholder="How can we help?" required></textarea>
+          <label class="contact-label" for="message">Message</label>
+          <textarea
+            class="contact-textarea"
+            id="message"
+            name="message"
+            rows="6"
+            placeholder="How can we help?"
+            required></textarea>
 
-        <!-- Hidden input to store date/time in NZT/NZDT -->
-        <input type="hidden" id="submitted_at" name="submitted_at" />
+          <input type="hidden" id="submitted_at" name="submitted_at" />
 
-        <button type="submit">Send Message</button>
-        <div id="status" class="status" aria-live="polite"></div>
-      </form>
-    </section>
-  </main>
+          <button class="contact-btn" type="submit">Send Message</button>
+          <div id="status" class="contact-status" aria-live="polite"></div>
+        </form>
+      </section>
+    </main>
 
-  <script>
-    // ============================================
-    //  Contact Form Submission (EmailJS)
-    // ============================================
+    <script>
+      // ============================================
+      //  Contact Form Submission (EmailJS)
+      // ============================================
+      const SERVICE_ID = "service_2zi4lmc";
+      const OWNER_TEMPLATE_ID = "template_yzspagm";
+      const USER_TEMPLATE_ID = "template_s8hvkmm";
 
-    const SERVICE_ID        = 'service_2zi4lmc';
-    const OWNER_TEMPLATE_ID = 'template_yzspagm';
-    const USER_TEMPLATE_ID  = 'template_s8hvkmm';
+      const form = document.getElementById("contact-form");
+      const statusEl = document.getElementById("status");
+      const submittedAt = document.getElementById("submitted_at");
 
-    const form     = document.getElementById('contact-form');
-    const statusEl = document.getElementById('status');
-    const submittedAt = document.getElementById('submitted_at');
-
-    function getNZDateTime() {
-      const now = new Date();
-      const options = {
-        timeZone: 'Pacific/Auckland',
-        year: 'numeric',
-        month: 'long',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-      };
-      return new Intl.DateTimeFormat('en-NZ', options).format(now);
-    }
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      statusEl.textContent = 'Sending…';
-      statusEl.className = 'status';
-
-      submittedAt.value = getNZDateTime(); // Set current NZT/NZDT datetime
-
-      try {
-        await emailjs.sendForm(SERVICE_ID, OWNER_TEMPLATE_ID, form);
-        await emailjs.sendForm(SERVICE_ID, USER_TEMPLATE_ID, form);
-
-        statusEl.textContent = 'Thanks! Your message has been sent.';
-        statusEl.classList.add('success');
-        form.reset();
-      } catch (err) {
-        console.error('EmailJS error:', err);
-        statusEl.textContent = 'Oops, something went wrong. Please try again later.';
-        statusEl.classList.add('error');
+      function getNZDateTime() {
+        const now = new Date();
+        return new Intl.DateTimeFormat("en-NZ", {
+          timeZone: "Pacific/Auckland",
+          year: "numeric",
+          month: "long",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false
+        }).format(now);
       }
-    });
-  </script>
-</body>
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        statusEl.textContent = "Sending…";
+        statusEl.className = "contact-status";
+
+        submittedAt.value = getNZDateTime();
+
+        try {
+          await emailjs.sendForm(SERVICE_ID, OWNER_TEMPLATE_ID, form);
+          await emailjs.sendForm(SERVICE_ID, USER_TEMPLATE_ID, form);
+
+          statusEl.textContent = "Thanks! Your message has been sent.";
+          statusEl.classList.add("success");
+          form.reset();
+        } catch (err) {
+          console.error("EmailJS error:", err);
+          statusEl.textContent = "Oops, something went wrong. Please try again later.";
+          statusEl.classList.add("error");
+        }
+      });
+    </script>
+  </body>
 </html>

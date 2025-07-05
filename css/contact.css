@@ -1,47 +1,49 @@
+/* contact.css  —  styles scoped to the contact form only */
 :root {
     --brand: #6e4af5;
     --brand-dark: #5840d7;
 }
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
 
-body {
-    margin: 0;
-    font-family: "Poppins", sans-serif;
-    background: #f5f5f5;
-}
-main {
+/* ---------- Layout wrapper ---------- */
+.contact-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     padding: 2rem 1rem;
+    font-family: "Poppins", sans-serif;
+    background: #f5f5f5;
 }
-.card {
+
+/* ---------- Card ---------- */
+.contact-card {
     background: #fff;
     border-radius: 1rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    width: 160%;
-    max-width: 1000px;
+    width: 100%;
+    max-width: 500px;
     padding: 2rem;
 }
-h1 {
+
+/* ---------- Headings ---------- */
+.contact-title {
     font-size: 1.75rem;
     text-align: center;
     margin-bottom: 1.5rem;
     color: #333;
     letter-spacing: -0.5px;
 }
-label {
+
+/* ---------- Labels ---------- */
+.contact-label {
     display: block;
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
-input,
-textarea {
+
+/* ---------- Inputs & Textarea ---------- */
+.contact-input,
+.contact-textarea {
     width: 100%;
     padding: 0.75rem 1rem;
     border: 1px solid #ddd;
@@ -52,13 +54,16 @@ textarea {
         border-color 0.3s,
         box-shadow 0.3s;
 }
-input:focus,
-textarea:focus {
+
+.contact-input:focus,
+.contact-textarea:focus {
     border-color: var(--brand);
     outline: none;
     box-shadow: 0 0 0 3px rgba(110, 74, 245, 0.15);
 }
-button {
+
+/* ---------- Button ---------- */
+.contact-btn {
     display: block;
     width: 100%;
     padding: 0.75rem 1rem;
@@ -71,22 +76,29 @@ button {
     cursor: pointer;
     transition: background 0.3s;
 }
-button:hover {
+
+.contact-btn:hover {
     background: var(--brand-dark);
 }
-.status {
+
+/* ---------- Status Message ---------- */
+.contact-status {
     text-align: center;
     margin-top: 1rem;
     font-size: 0.9rem;
 }
-.status.success {
+
+.contact-status.success {
     color: green;
 }
-.status.error {
+
+.contact-status.error {
     color: #d93025;
 }
+
+/* ---------- Responsive ---------- */
 @media (max-width: 480px) {
-    .card {
+    .contact-card {
         padding: 1.25rem;
     }
 }

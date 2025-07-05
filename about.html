@@ -1,29 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About | Malmin</title>
-    <link rel="stylesheet" href="css/about.css">
-
-</head>
-<body>
-    
-  <!-- IMPORT NAVBAR -->
-  <header id="site-navbar">
-      <div id="navbar"></div>
-      <script>
-        fetch('navbar.html')
-        .then(resp => resp.text())
-        .then(html => {
-            document.getElementById('navbar').innerHTML = html;
-        })
-        .catch(err => console.error('Error loading navbar:', err));
-    </script>
-  </header>
-
-    
-    
-  
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>About | Malmin</title>
+        <link rel="stylesheet" href="css/about.css" />
+    </head>
+    <body>
+        <!-- IMPORT NAVBAR -->
+        <header id="site-navbar">
+            <div id="navbar"></div>
+            <script>
+                fetch("navbar.html")
+                    .then((resp) => resp.text())
+                    .then((html) => {
+                        document.getElementById("navbar").innerHTML = html;
+                    })
+                    .catch((err) => console.error("Error loading navbar:", err));
+            </script>
+        </header>
+    </body>
 </html>
