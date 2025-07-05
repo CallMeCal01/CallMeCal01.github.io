@@ -113,19 +113,8 @@
       submittedAt.value = getNZDateTime(); // Set current NZT/NZDT datetime
 
       try {
-        await emailjs.sendForm(SERVICE_ID, OWNER_TEMPLATE_ID, {
-          to_email:  form.elements['email'].value,
-          from_name: form.elements['name'].value,
-          message:   form.elements['message'].value,
-          submitted_at: form.elements['submitted_at'].value
-        });
-
-        await emailjs.send(SERVICE_ID, USER_TEMPLATE_ID, {
-          to_email:  form.elements['email'].value,
-          from_name: form.elements['name'].value,
-          message:   form.elements['message'].value,
-          submitted_at: form.elements['submitted_at'].value
-        });
+        await emailjs.sendForm(SERVICE_ID, OWNER_TEMPLATE_ID, form);
+        await emailjs.sendForm(SERVICE_ID, USER_TEMPLATE_ID, form);
 
         statusEl.textContent = 'Thanks! Your message has been sent.';
         statusEl.classList.add('success');
