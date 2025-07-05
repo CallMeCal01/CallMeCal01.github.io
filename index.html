@@ -2,13 +2,27 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Home</title>
+        <title>Under Construction</title>
+        <link rel="stylesheet" href="css/styles-index.css"/>
+        <link rel="stylesheet" href="css/navbar.css"/>
+        <script src="scripts.js"></script>
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script> 
     </head>
     <body>
+        <!-- IMPORT NAVBAR  -->
+          <div id="navbar"></div>
+        <script>
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+                lucide.createIcons(); // Call icon creation after navbar is loaded if needed
+                })
+            .catch(error => console.error('Error loading navbar:', error));
+    </script>
         
-        <h1>Website under construction</h1><br>
-        <h3>Check back again soon!</h3>
-    
-    
+         <h5>Website under construction, check back again soon!</h5>
+        
+        
     </body>
 </html>
