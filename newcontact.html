@@ -104,11 +104,11 @@
         await emailjs.sendForm(SERVICE_ID, OWNER_TEMPLATE_ID, form);
 
         /* 2️⃣ Send an auto‑reply to the visitor */
-        await emailjs.send(SERVICE_ID, USER_TEMPLATE_ID, {
-          to_email:   form.reply_to.value,   // variable used as "To" in the auto‑reply template
-          to_name:    form.from_name.value,  // optional – use it in the template if you like
-          message:    form.message.value     // e.g. echo their message back or ignore
-        });
+       await emailjs.send(SERVICE_ID, USER_TEMPLATE_ID, {
+           to_email:   form.elements['reply_to'].value,
+           to_name:    form.elements['from_name'].value,
+           message:    form.elements['message'].value
+});
 
         statusEl.textContent = 'Thanks! Your message has been sent.';
         statusEl.classList.add('success');
