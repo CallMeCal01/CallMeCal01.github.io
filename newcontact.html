@@ -105,8 +105,8 @@
 
         /* 2️⃣ Send an auto‑reply to the visitor */
        await emailjs.send(SERVICE_ID, USER_TEMPLATE_ID, {
-           to_email:   form.elements['reply_to'].value,
-           to_name:    form.elements['from_name'].value,
+           email:   form.elements['reply_to'].value,
+           name:    form.elements['from_name'].value,
            message:    form.elements['message'].value
 });
 
