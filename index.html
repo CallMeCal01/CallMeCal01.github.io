@@ -6,11 +6,11 @@
         <link rel="stylesheet" href="css/styles-index.css"/>
         <link rel="stylesheet" href="css/navbar.css"/>
         <script src="scripts.js"></script>
-        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script> 
+     <!--   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>  -->
     </head>
     <body>
         <!-- IMPORT NAVBAR  -->
-          <div id="navbar"></div>
+          <div id="navbar">
         <script>
             fetch('navbar.html')
                 .then(response => response.text())
@@ -19,9 +19,10 @@
                 lucide.createIcons(); // Call icon creation after navbar is loaded if needed
                 })
             .catch(error => console.error('Error loading navbar:', error));
-    </script>
+              </script>
+        </div>
         
-         <h5>Website under construction, check back again soon!</h5>
+        <!-- <h5>Website under construction, check back again soon!</h5> -->
         
         
     </body>

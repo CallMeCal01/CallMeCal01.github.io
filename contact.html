@@ -23,7 +23,7 @@
 
   <header id="site-navbar">
     <!-- IMPORT NAVBAR  -->
-          <div id="navbar"></div>
+          <div id="navbar">
         <script>
             fetch('navbar.html')
                 .then(response => response.text())
@@ -32,7 +32,8 @@
                 lucide.createIcons(); // Call icon creation after navbar is loaded if needed
                 })
             .catch(error => console.error('Error loading navbar:', error));
-    </script>
+              </script>
+        </div>
   </header>
 
 
