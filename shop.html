@@ -8,18 +8,17 @@
 </head>
 <body>
 
- <!-- IMPORT NAVBAR  -->
-          <div id="navbar">
-        <script>
-            fetch('navbar.html')
-                .then(response => response.text())
-                .then(data => {
-                document.getElementById('navbar').innerHTML = data;
-                //lucide.createIcons(); // Call icon creation after navbar is loaded if needed
-                //})
-            .catch(error => console.error('Error loading navbar:', error));
-              </script>
-        </div>
+ <header id="site-navbar">
+    <div id="navbar"></div>
+    <script>
+      fetch('navbar.html')
+        .then(resp => resp.text())
+        .then(html => {
+          document.getElementById('navbar').innerHTML = html;
+        })
+        .catch(err => console.error('Error loading navbar:', err));
+    </script>
+  </header>
 
   <!-- Product Grid -->
   <section class="product-grid">
