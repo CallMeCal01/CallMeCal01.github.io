@@ -38,7 +38,6 @@
 }
 
 .dropbtn {
-  display: inline-block;
   color: white;
   text-align: center;
   padding: 14px 16px;
@@ -49,6 +48,7 @@ li a:hover, .dropdown:hover .dropbtn {
     font-family: "IBM Plex Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: bold;
+  color: #555;
 }
 
 li.dropdown {
