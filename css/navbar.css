@@ -5,6 +5,16 @@
       font-family:"IBM Plex Sans",sans-serif;
     }
 
+/* Height of your fixed navbar */
+:root {
+  --navbar-h: 72px;   /* adjust to your real navbar height */
+}
+
+/* Push the main content below the bar */
+body {
+  padding-top: var(--navbar-h);
+}
+
     /* === NAVBAR (now fixed) === */
     .navbar{
       position:fixed;          /* lock it to the viewport             */
