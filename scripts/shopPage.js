@@ -4,8 +4,8 @@ var candleSizes = ["Tealight", "Small", "Medium", "Large"];
 
 console.log(candleScents);
 
-var docGrid = document.getElementById("docGrid").innerHTML;
+var docGrid = document.getElementById("docGrid");
 
 for (let i = 0; i < candleScents.length; i++) {
-  docGrid = docGrid + candleScents[i] + ", ";
+  docGrid = docGrid.innerHTML + candleScents[i] + ", ";
 }
