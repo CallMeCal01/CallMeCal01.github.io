@@ -18,9 +18,7 @@
   text-decoration: none;
   color: #333;
 }
-.nav-logo:hover { 
-  color: #555;
-}
+
 
 .nav-links {
   display: flex;
@@ -48,7 +46,7 @@
 .dropbtn {
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding-bottom: 1rem;
   text-decoration: none;
 }
 
