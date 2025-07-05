@@ -3,56 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | Malmin</title>
+  <title>Contact Us | Malmin</title>
 
-  <!-- Google Font (optional – remove if you have your own) -->
+  <!-- Google Fonts (optional; remove if using your own) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 
-  <!-- 🔗  YOUR EXTERNAL STYLESHEET  -->
+  <!-- 🔗 External stylesheet for global styles -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- ✨  Quick form‑only styles (move to external file when ready) -->
+  <!-- ✨ Minimal inline styles for the form (move to CSS file later) -->
   <style>
     :root { --brand: #6e4af5; --brand-dark: #5840d7; }
-    *,*::before,*::after{box-sizing:border-box}
-    body{font-family:'Poppins',sans-serif;margin:0;background:#f5f5f5}
-    main{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem 1rem}
-    .card{background:#fff;border-radius:1rem;box-shadow:0 4px 20px rgba(0,0,0,.1);width:100%;max-width:500px;padding:2rem}
-    h1{font-size:1.75rem;text-align:center;margin-bottom:1.5rem;color:#333;letter-spacing:-.5px}
-    label{display:block;font-weight:600;margin-bottom:.5rem}
-    input,textarea{width:100%;padding:.75rem 1rem;border:1px solid #ddd;border-radius:.5rem;font-size:1rem;margin-bottom:1.5rem;transition:border-color .3s,box-shadow .3s}
-    input:focus,textarea:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(110,74,245,.15)}
-    button{display:block;width:100%;padding:.75rem 1rem;background:var(--brand);color:#fff;border:none;border-radius:.5rem;font-size:1rem;font-weight:600;cursor:pointer;transition:background .3s}
-    button:hover{background:var(--brand-dark)}
-    .status{text-align:center;margin-top:1rem;font-size:.9rem}
-    .status.success{color:green}.status.error{color:#d93025}
-    @media(max-width:480px){.card{padding:1.25rem}}
+    *,*::before,*::after { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Poppins', sans-serif; background: #f5f5f5; }
+    main { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 2rem 1rem; }
+    .card { background: #fff; border-radius: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,.1); width: 100%; max-width: 500px; padding: 2rem; }
+    h1 { font-size: 1.75rem; text-align: center; margin-bottom: 1.5rem; color: #333; letter-spacing: -.5px; }
+    label { display: block; font-weight: 600; margin-bottom: .5rem; }
+    input, textarea { width: 100%; padding: .75rem 1rem; border: 1px solid #ddd; border-radius: .5rem; font-size: 1rem; margin-bottom: 1.5rem; transition: border-color .3s, box-shadow .3s; }
+    input:focus, textarea:focus { border-color: var(--brand); outline: none; box-shadow: 0 0 0 3px rgba(110,74,245,.15); }
+    button { display: block; width: 100%; padding: .75rem 1rem; background: var(--brand); color: #fff; border: none; border-radius: .5rem; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background .3s; }
+    button:hover { background: var(--brand-dark); }
+    .status { text-align: center; margin-top: 1rem; font-size: .9rem; }
+    .status.success { color: green; }
+    .status.error   { color: #d93025; }
+    @media (max-width: 480px) { .card { padding: 1.25rem; } }
   </style>
 
   <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
-    /* ---------------------------------------------------
-       1️⃣  INITIALISE EmailJS ONCE
-       --------------------------------------------------- */
-    emailjs.init('1_RFTegKq6OY8Wtsm'); //  ← replace with your real public key
+    /* Initialise EmailJS (replace with your real key) */
+    emailjs.init('1_RFTegKq6OY8Wtsm');
   </script>
 </head>
 <body>
-  <!-- Header: insert your own navbar markup here -->
+  <!-- ░█▀▄░█░█░█▀▄░█░█  NAVBAR  █▀▄░█▀█░█▀█░█▄█ -->
   <header id="site-navbar">
-     <!-- IMPORT NAVBAR  -->
-          <div id="navbar"></div>
-        <script>
-            fetch('navbar.html')
-                .then(response => response.text())
-                .then(data => {
-                document.getElementById('navbar').innerHTML = data;
-            .catch(error => console.error('Error loading navbar:', error));
+    <div id="navbar"></div>
+    <script>
+      /* Dynamically load your navbar HTML */
+      fetch('navbar.html')
+        .then(resp => resp.text())
+        .then(html => {
+          document.getElementById('navbar').innerHTML = html;
+        })
+        .catch(err => console.error('Error loading navbar:', err));
     </script>
-    </header>
+  </header>
 
   <main>
     <section class="contact-wrapper" id="contact">
@@ -76,20 +76,15 @@
 
   <script>
     // ============================================
-    //  Contact Form Submission (EmailJS)
+    //  Contact Form Submission (EmailJS)
     // ============================================
 
-    /*
-     *  👇 Replace these constants with your real IDs.
-     *  You need TWO templates:
-     *    – one that emails YOU (the site owner)
-     *    – one that auto‑replies to the visitor
-     */
-    const SERVICE_ID          = 'service_2zi4lmc';           // e.g. service_2zi4lmc
-    const OWNER_TEMPLATE_ID   = 'template_yzspagm';        // email to you
-    const USER_TEMPLATE_ID    = 'template_s8hvkmm';    // confirmation to visitor
+    /* Replace these IDs with your real values */
+    const SERVICE_ID        = 'service_2zi4lmc';  // Your EmailJS service ID
+    const OWNER_TEMPLATE_ID = 'template_yzspagm'; // Sends to YOU
+    const USER_TEMPLATE_ID  = 'template_s8hvkmm'; // Auto‑reply to visitor
 
-    const form = document.getElementById('contact-form');
+    const form     = document.getElementById('contact-form');
     const statusEl = document.getElementById('status');
 
     form.addEventListener('submit', async (e) => {
@@ -98,15 +93,15 @@
       statusEl.className = 'status';
 
       try {
-        /* 1️⃣ Send the form to YOU */
+        /* 1️⃣  Email to YOU (owner) — includes all form fields automatically */
         await emailjs.sendForm(SERVICE_ID, OWNER_TEMPLATE_ID, form);
 
-        /* 2️⃣ Send an auto‑reply to the visitor */
-       await emailjs.send(SERVICE_ID, USER_TEMPLATE_ID, {
-           email:   form.elements['email'].value,
-           name:    form.elements['name'].value,
-           message:    form.elements['message'].value
-});
+        /* 2️⃣  Auto‑reply to VISITOR */
+        await emailjs.send(SERVICE_ID, USER_TEMPLATE_ID, {
+          to_email:  form.elements['email'].value, // maps to {{to_email}} in template
+          from_name: form.elements['name'].value,  // maps to {{from_name}}
+          message:   form.elements['message'].value // optional, if you echo it back
+        });
 
         statusEl.textContent = 'Thanks! Your message has been sent.';
         statusEl.classList.add('success');
