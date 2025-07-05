@@ -14,7 +14,10 @@
   <link rel="stylesheet" href="css/contact.css">
 
   <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+   <script>
+     emailjs.init('qTIG3m45V4oNbVpPS'); //  ← replace
+   </script>
 </head>
 <body>
 
@@ -45,10 +48,9 @@
             </nav>
   </header>
 
-  <!-- Main Content -->
+
   <main>
     <section class="contact-wrapper" id="contact">
-      <!-- Contact Form -->
       <form id="contact-form" class="card" autocomplete="off">
         <h1>Contact Us</h1>
 
@@ -69,7 +71,7 @@
 
   <script>
     // ============================================
-    //  Contact Form Submission Handler (EmailJS)
+    //  Contact Form Submission (EmailJS)
     // ============================================
     const form = document.getElementById('contact-form');
     const statusEl = document.getElementById('status');
@@ -81,17 +83,16 @@
 
       emailjs
         .sendForm(
-          'service_2zi4lmc',   // e.g. service_123abc
-          'template_lfe828t',  // e.g. template_xzy789
-          form,
-          {
-            publicKey: 'qTIG3m45V4oNbVpPS', // e.g. ABCdEfgHIjklMNop
-          }
+          'service_2zi4lmc',   // ← replace
+          'template_lfe828t',  // ← replace
+          form
         )
-        .then(() => {
-          statusEl.textContent = 'Thanks! Your message has been sent.';
-          statusEl.classList.add('success');
-          form.reset();
+        .then(({ status }) => {
+          if (status === 200) {
+            statusEl.textContent = 'Thanks! Your message has been sent.';
+            statusEl.classList.add('success');
+            form.reset();
+          }
         })
         .catch((err) => {
           console.error('EmailJS error:', err);
@@ -102,3 +103,4 @@
   </script>
 </body>
 </html>
+
