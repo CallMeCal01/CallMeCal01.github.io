@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shop - Malmin</title>
+  <link rel="stylesheet" href="css/styles-shop.css"/>
+  <link rel="stylesheet" href="css/navbar.css"/>
+</head>
+<body>
+
+  <!-- Category Selector -->
+  <nav class="navbar">
+            <div class="nav-logo">Malmin</div>
+                <ul class="nav-links">
+                    <li><a href="shop.html" class="nav-active">All Products</a></li>
+                    <li><a href="shop-candles.html">Candles</a></li>
+                     <li><a href="shop-skincare.html">Skincare</a></li>
+                    <li><a href="shop-makeup.html">Makeup</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+              <div class="nav-icon" id="cart-icon">
+                    <i data-lucide="shopping-bag"></i>
+                </div>
+            </nav>
+
+  <!-- Product Grid -->
+  <section class="product-grid">
+    <div class="product-card" data-category="candles">
+      <img src="candle.jpg" alt="Vanilla Candle" />
+      <h3>Vanilla Candle</h3>
+      <p>$15.00</p>
+    </div>
+
+    <div class="product-card" data-category="skincare">
+      <img src="serum.jpg" alt="Facial Serum" />
+      <h3>Facial Serum</h3>
+      <p>$29.00</p>
+    </div>
+
+    <!-- More products... -->
+  </section>
+
+  <script src="scripts/shopPage.js"></script>
+</body>
+</html>
