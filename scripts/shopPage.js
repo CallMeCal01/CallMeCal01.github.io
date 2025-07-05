@@ -1,8 +1,11 @@
-var products = [
-                "Vanilla Soy Wax Candle",
-                "Lavender Soy Wax Candle",
-                "Whiskey, Wood Smoke and Leather",
-            ];
+var candleScents = ["Vanilla", "Lavender", "Whiskey, Wood Smoke and Leather", "Pear and Jasmine", "French Pear", "Jasmine", "Peppermint", "Strawberry", "Sandalwood and Pine", "Amber",];
+var candleWaxTypes = ["Soy", "Soy + Coconut", "Coconut"];
+var candleSizes = ["Tealight", "Small", "Medium", "Large"];
 
+console.log(candleScents);
 
-console.log(products);
+var docGrid = document.getElementById(docGrid).innerHTML
+
+for (let i = 0; i < candleScents.length; i++) {
+  docGrid = docGrid + candleScents[i] + ", ";
+}
