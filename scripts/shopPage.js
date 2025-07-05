@@ -1,6 +1,3 @@
-
-
-
 var products = [
                 "Vanilla Soy Wax Candle",
                 "Lavender Soy Wax Candle",
