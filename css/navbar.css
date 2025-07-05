@@ -1,13 +1,22 @@
-/* === NAVBAR BASE === */
+/* === GLOBAL RESET === */
+    html,body{
+      margin:0;                /* kill default body margin            */
+      padding:0;
+      font-family:"IBM Plex Sans",sans-serif;
+    }
+
+    /* === NAVBAR (now fixed) === */
     .navbar{
-      display:flex;            /* keep the logo in normal flow           */
+      position:fixed;          /* lock it to the viewport             */
+      top:0; left:0; width:100%;
+      z-index:1000;            /* stay above everything else          */
+
+      display:flex;
       align-items:center;
-      justify-content:flex-start; /* no gap‑stretching                     */
+      justify-content:flex-start;
       padding:1rem 2rem;
       border-bottom:1px solid #eee;
       background:#fff;
-      font-family:"IBM Plex Sans",sans-serif;
-      position:relative;       /* containing block for absolute centring */
     }
 
     /* === LOGO === */
@@ -16,21 +25,20 @@
       font-weight:bold;
       text-decoration:none;
       color:#333;
-      pointer-events:none;     /* makes the logo non‑clickable            */
+      pointer-events:none;
     }
 
     /* === NAV LINKS (centered) === */
     .nav-links{
-      position:absolute;       /* pull out of flex flow                   */
-      left:50%;                /* go to the visual centre                 */
-      transform:translateX(-50%); /* …and offset by half its own width   */
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
       display:flex;
       gap:2rem;
       list-style:none;
       margin:0;
       padding:0;
     }
-
     .nav-links a{
       text-decoration:none;
       color:#333;
@@ -38,7 +46,7 @@
     }
     .nav-links a:hover{color:#555;}
 
-    /* === OPTIONAL DROPDOWN / ICON RULES (untouched) === */
+    /* === OPTIONAL DROPDOWN / ICON RULES === */
     .nav-icon i{
       width:20px;
       height:20px;
@@ -77,3 +85,8 @@
     }
     .dropdown-content a:hover{background:#f1f1f1;}
     .dropdown:hover .dropdown-content{display:block;}
+
+    /* === PAGE CONTENT OFFSET === */
+    .page-content{
+      padding:120px 2rem 2rem; /* 120px ≈ navbar height + a little gap */
+    }
